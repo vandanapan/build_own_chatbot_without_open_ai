@@ -21,7 +21,7 @@ embeddings = None
 def init_llm():
     global llm_hub, embeddings
     # Set up the environment variable for HuggingFace and initialize the desired model.
-    os.environ["HUGGINGFACEHUB_API_TOKEN"] = "YOUR API KEY"
+    os.environ["HUGGINGFACEHUB_API_TOKEN"]="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"
 
     # repo name for the model
     model_id = "tiiuae/falcon-7b-instruct"
@@ -57,7 +57,7 @@ def process_document(document_path):
     conversation_retrieval_chain = RetrievalQA.from_chain_type(
         llm=llm_hub,
         chain_type="stuff",
-        retriever=db.as_retriever(search_type="mmr", search_kwargs={'k': 6, 'lambda_mult': 0.25}),
+        retriever=db.as_retriever(search_kwargs={'k': 3}),
         return_source_documents=False,
         input_key = "question"
      #   chain_type_kwargs={"prompt": prompt} # if you are using prompt template, you need to uncomment this part
